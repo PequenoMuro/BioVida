@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+
+      .navbar.custom{
+
+        
+        margin: 0%;
+        border-color: #25c25a;
+        background-color:#25c25a;      }
+
+        body{
+            background-color:#f1f2f4;
+            overflow-x: hidden;
+        }
+
+        .card {
+  width: 350px;
+  height: 180px;
+  background: white;
+  border: 1px solid #d0d0d0;
+  border-radius:7px;
+  box-shadow: 0px 10px 15px -12px rgba(0, 0, 0, 0.3);
+             border-color:#dedede;
+             background-repeat: no-repeat;
+             background-size: 40% auto;
+             background-position: bottom left;
+             
+}
+
+button {
+ font-size: 16px;
+ 
+ 
+ padding: 1em 10em 1em 10em;
+ border: none;
+ background: #f76d59;
+
+ transition: all 0.1s linear;
+ box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+ transform: scale(0.95);
+ background-color: #a1584d;
+ color:darkgray;
+}
+
+
+
+
+
+
+
+.full-rounded {
+ border-radius: 2em;
+}
+
+
+
+    </style>
+<script>
+    
+    
+            function getURLParameters() {
+        var params = {};
+
+        var pairs = window.location.search.substring(1).split('&'); 
+
+        for (var i = 0; i < pairs.length; i++) {
+            var pair = pairs[i].split("="); 
+            params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || ''); // Decodificar e armazenar os valores
+        }
+
+        console.log(params); 
+        return params; // Retornar os parâmetros como objeto
+    }
+
+    // Função para exibir os valores selecionados nos cartões
+    function exibirValoresSelecionados() {
+        var params = getURLParameters(); // Obter os parâmetros da URL
+
+//Goleiro
+     if (params['goleiro'] === 'ALISSON') {
+        document.getElementById('ftgoleiro').style.backgroundImage = "url('jogadoresSelecionados/Alisson.png')";
+    } else if (params['goleiro'] === 'BENTO') {
+        document.getElementById('ftgoleiro').style.backgroundImage = "url('jogadoresSelecionados/Bento.png')";
+    }
+    } else if (params['goleiro'] === 'CASSIO') {
+        document.getElementById('ftgoleiro').style.backgroundImage = "url('jogadoresSelecionados/Cassio.png')";
+    }
+//Lateral Esquerdo
+ if (params['lateralesquerdo'] === 'MARCELO') {
+        document.getElementById('ftlatesquerdo').style.backgroundImage = "url('jogadoresSelecionados/Marcelo.png')";
+    }
+     else if (params['lateralesquerdo'] === 'ROBERTO') {
+        document.getElementById('ftlatesquerdo').style.backgroundImage = "url('jogadoresSelecionados/RobertoCarlos.png')";
+    }
+
+//Zagueiro 1
+if (params['zagueiro1'] === 'GIL') {
+        document.getElementById('ftzag1').style.backgroundImage = "url('jogadoresSelecionados/Gil.png')";
+    }
+    else if (params['zagueiro1'] === 'HARRY') {
+        document.getElementById('ftzag1').style.backgroundImage = "url('jogadoresSelecionados/HarryMaquire.png')";
+    }
+    else if (params['zagueiro1'] === 'MALDINI') {
+        document.getElementById('ftzag1').style.backgroundImage = "url('jogadoresSelecionados/Maldini.png')";
+    }
+    else if (params['zagueiro1'] === 'PIQUE') {
+        document.getElementById('ftzag1').style.backgroundImage = "url('jogadoresSelecionados/Pique.png')";
+    }
+    else if (params['zagueiro1'] === 'SERGIO') {
+        document.getElementById('ftzag1').style.backgroundImage = "url('jogadoresSelecionados/SergioRamos.png')";
+    }
+
+    //Zagueiro 2
+if (params['zagueiro2'] === 'GIL') {
+        document.getElementById('ftzag2').style.backgroundImage = "url('jogadoresSelecionados/Gil.png')";
+    }
+    else if (params['zagueiro2'] === 'HARRY') {
+        document.getElementById('ftzag2').style.backgroundImage = "url('jogadoresSelecionados/HarryMaquire.png')";
+    }
+    else if (params['zagueiro2'] === 'MALDINI') {
+        document.getElementById('ftzag2').style.backgroundImage = "url('jogadoresSelecionados/Maldini.png')";
+    }
+    else if (params['zagueiro2'] === 'PIQUE') {
+        document.getElementById('ftzag2').style.backgroundImage = "url('jogadoresSelecionados/Pique.png')";
+    }
+    else if (params['zagueiro2'] === 'SERGIO') {
+        document.getElementById('ftzag2').style.backgroundImage = "url('jogadoresSelecionados/SergioRamos.png')";
+    }
+
+    //Lateral Direito
+ if (params['lateraldireito'] === 'CAFU') {
+        document.getElementById('ftlatdireito').style.backgroundImage = "url('jogadoresSelecionados/Cafu.png')";
+    }
+     else if (params['lateraldireito'] === 'DANIEL') {
+        document.getElementById('ftlatdireito').style.backgroundImage = "url('jogadoresSelecionados/DanielAlves.png')";
+    }
+
+     //Meio 1
+ if (params['meio1'] === 'CASEMIRO') {
+        document.getElementById('ftmeio1').style.backgroundImage = "url('jogadoresSelecionados/Casemiro.png')";
+    }
+     else if (params['meio1'] === 'MODRIC') {
+        document.getElementById('ftmeio1').style.backgroundImage = "url('jogadoresSelecionados/Modric.png')";
+    }
+    else if (params['meio1'] === 'RALF') {
+        document.getElementById('ftmeio1').style.backgroundImage = "url('jogadoresSelecionados/Ralf.png')";
+    }
+    else if (params['meio1'] === 'TONI') {
+        document.getElementById('ftmeio1').style.backgroundImage = "url('jogadoresSelecionados/ToniKroos.png')";
+    }
+    else if (params['meio1'] === 'VALVERDE') {
+        document.getElementById('ftmeio1').style.backgroundImage = "url('jogadoresSelecionados/Valverde.png')";
+    }
+
+    //Meio 2
+ if (params['meio2'] === 'CASEMIRO') {
+        document.getElementById('ftmeio2').style.backgroundImage = "url('jogadoresSelecionados/Casemiro.png')";
+    }
+     else if (params['meio2'] === 'MODRIC') {
+        document.getElementById('ftmeio2').style.backgroundImage = "url('jogadoresSelecionados/Modric.png')";
+    }
+    else if (params['meio2'] === 'RALF') {
+        document.getElementById('ftmeio2').style.backgroundImage = "url('jogadoresSelecionados/Ralf.png')";
+    }
+    else if (params['meio2'] === 'TONI') {
+        document.getElementById('ftmeio2').style.backgroundImage = "url('jogadoresSelecionados/ToniKroos.png')";
+    }
+    else if (params['meio2'] === 'VALVERDE') {
+        document.getElementById('ftmeio2').style.backgroundImage = "url('jogadoresSelecionados/Valverde.png')";
+    }
+
+//Meio 3
+ if (params['meio3'] === 'CASEMIRO') {
+        document.getElementById('ftmeio3').style.backgroundImage = "url('jogadoresSelecionados/Casemiro.png')";
+    }
+     else if (params['meio3'] === 'MODRIC') {
+        document.getElementById('ftmeio3').style.backgroundImage = "url('jogadoresSelecionados/Modric.png')";
+    }
+    else if (params['meio3'] === 'RALF') {
+        document.getElementById('ftmeio3').style.backgroundImage = "url('jogadoresSelecionados/Ralf.png')";
+    }
+    else if (params['meio3'] === 'TONI') {
+        document.getElementById('ftmeio3').style.backgroundImage = "url('jogadoresSelecionados/ToniKroos.png')";
+    }
+    else if (params['meio3'] === 'VALVERDE') {
+        document.getElementById('ftmeio3').style.backgroundImage = "url('jogadoresSelecionados/Valverde.png')";
+    }
+    
+    //Atacante 1
+ if (params['atacante1'] === 'PELE') {
+        document.getElementById('ftatac1').style.backgroundImage = "url('jogadoresSelecionados/Pele.png')";
+    }
+     else if (params['atacante1'] === 'RIVALDO') {
+        document.getElementById('ftatac1').style.backgroundImage = "url('jogadoresSelecionados/Rivaldo.png')";
+    }
+    else if (params['atacante1'] === 'RONALDINHO') {
+        document.getElementById('ftatac1').style.backgroundImage = "url('jogadoresSelecionados/Ronaldinho.png')";
+    }
+    else if (params['atacante1'] === 'RONALDO') {
+        document.getElementById('ftatac1').style.backgroundImage = "url('jogadoresSelecionados/Ronaldo.png')";
+    }
+    else if (params['atacante1'] === 'VINICIUS JUNIOR') {
+        document.getElementById('ftatac1').style.backgroundImage = "url('jogadoresSelecionados/ViniJr.png')";
+    }
+
+    //Atacante 2
+ if (params['atacante2'] === 'PELE') {
+        document.getElementById('ftatac2').style.backgroundImage = "url('jogadoresSelecionados/Pele.png')";
+    }
+     else if (params['atacante2'] === 'RIVALDO') {
+        document.getElementById('ftatac2').style.backgroundImage = "url('jogadoresSelecionados/Rivaldo.png')";
+    }
+    else if (params['atacante2'] === 'RONALDINHO') {
+        document.getElementById('ftatac2').style.backgroundImage = "url('jogadoresSelecionados/Ronaldinho.png')";
+    }
+    else if (params['atacante2'] === 'RONALDO') {
+        document.getElementById('ftatac2').style.backgroundImage = "url('jogadoresSelecionados/Ronaldo.png')";
+    }
+    else if (params['atacante2'] === 'VINICIUS JUNIOR') {
+        document.getElementById('ftatac2').style.backgroundImage = "url('jogadoresSelecionados/ViniJr.png')";
+    }
+
+    //Atacante 3
+ if (params['atacante3'] === 'PELE') {
+        document.getElementById('ftatac3').style.backgroundImage = "url('jogadoresSelecionados/Pele.png')";
+    }
+     else if (params['atacante3'] === 'RIVALDO') {
+        document.getElementById('ftatac3').style.backgroundImage = "url('jogadoresSelecionados/Rivaldo.png')";
+    }
+    else if (params['atacante3'] === 'RONALDINHO') {
+        document.getElementById('ftatac3').style.backgroundImage = "url('jogadoresSelecionados/Ronaldinho.png')";
+    }
+    else if (params['atacante3'] === 'RONALDO') {
+        document.getElementById('ftatac3').style.backgroundImage = "url('jogadoresSelecionados/Ronaldo.png')";
+    }
+    else if (params['atacante3'] === 'VINICIUS JUNIOR') {
+        document.getElementById('ftatac3').style.backgroundImage = "url('jogadoresSelecionados/ViniJr.png')";
+    }
+
+    
+
+       
+        document.getElementById('nmgoleiro').innerHTML = params['goleiro'] || 'N/A';
+        document.getElementById('nmlatesquerdo').innerHTML = params['lateralesquerdo'] || 'N/A';
+        document.getElementById('nmzag1').innerHTML = params['zagueiro1'] || 'N/A';
+        document.getElementById('nmzag2').innerHTML = params['zagueiro2'] || 'N/A';
+        document.getElementById('nmlatdireito').innerHTML = params['lateraldireito'] || 'N/A';
+        document.getElementById('nmmeio1').innerHTML = params['meio1'] || 'N/A';
+        document.getElementById('nmmeio2').innerHTML = params['meio2'] || 'N/A';
+        document.getElementById('nmmeio3').innerHTML = params['meio3'] || 'N/A';
+        document.getElementById('nmatac1').innerHTML = params['atacante1'] || 'N/A';
+        document.getElementById('nmatac2').innerHTML = params['atacante2'] || 'N/A';
+        document.getElementById('nmatac3').innerHTML = params['atacante3'] || 'N/A';
+    }
+
+    // Chamando a função para exibir os valores selecionados quando a página carregar
+    window.onload = exibirValoresSelecionados;
+
+
+ 
+    </script>
+
+</head>
+<body>
+    
+    <nav class="navbar navbar-default custom fixed-top">
+       <label style="color: white;font-size: 170%;margin-top:10px;margin-bottom: 10px"> JOGADORES </label>
+    </nav>
+    
+    
+     <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+      <center>
+      <div id="ftgoleiro" class="card" style="background-image: url('https://i.ibb.co/vZYh09H/imagem-2024-04-10-190930999.png');" >
+    <br>
+    <h1 ><b id="nmgoleiro" style="-webkit-text-stroke: 0.5px black;color: black;margin-left:12%">  <b>NEYMAR JR</h1><img src="confere.png" style="position: absolute; top: 0; right: 0;" width="25px" height="25px">
+    <h6><b style="-webkit-text-stroke: 0.5px #cfcfcf;color: black;margin-right:20%">GOLEIRO<b></h6>
+    <br>
+   <h6>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px black; color: black;">5,12</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">4,15</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">24</b>
+</h6>
+<h6>
+    <b style="margin-left: 14%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">ÚLTIMA</b>
+    <b style="margin-left: 6%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">MEDIA</b>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">JOGOS</b>
+</h6>
+<br>
+
+<h1>
+    <hr>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;font-size:10px;margin-bottom:50%">CS</b>
+    <b style="-webkit-text-stroke: 0.1px black;color: black;margin-right:12%">42.64 </b>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #fa9e91; color: black;font-size:10px;margin-bottom:50%">8.21%</b>
+
+</h1>
+      </div>
+      <br>
+      <div id="ftlatesquerdo" class="card" style="background-image: url('https://i.ibb.co/vZYh09H/imagem-2024-04-10-190930999.png');" >
+    <br>
+    <h1><b id="nmlatesquerdo" style="-webkit-text-stroke: 0.5px black;color: black;margin-left:12%">NEYMAR JR <b></h1><img src="confere.png" style="position: absolute; top: 0; right: 0;" width="25px" height="25px">
+    <h6><b style="-webkit-text-stroke: 0.5px #cfcfcf;color: black;margin-right:11%">LAT ESQUERDO<b></h6>
+    <br>
+   <h6>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px black; color: black;">5,12</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">4,15</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">24</b>
+</h6>
+<h6>
+    <b style="margin-left: 14%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">ÚLTIMA</b>
+    <b style="margin-left: 6%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">MEDIA</b>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">JOGOS</b>
+</h6>
+<br>
+
+<h1>
+    <hr>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;font-size:10px;margin-bottom:50%">CS</b>
+    <b style="-webkit-text-stroke: 0.1px black;color: black;margin-right:12%">42.64 </b>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #fa9e91; color: black;font-size:10px;margin-bottom:50%">8.21%</b>
+
+</h1>
+      </div>
+      <br>
+      <div id="ftzag1" class="card"  style="background-image: url('https://i.ibb.co/vZYh09H/imagem-2024-04-10-190930999.png');">
+    <br>
+    <h1><b id="nmzag1" style="-webkit-text-stroke: 0.5px black;color: black;margin-left:12%">NEYMAR JR <b></h1><img src="confere.png" style="position: absolute; top: 0; right: 0;" width="25px" height="25px">
+    <h6><b style="-webkit-text-stroke: 0.5px #cfcfcf;color: black;margin-right:14%">ZAGUEIRO 1<b></h6>
+    <br>
+   <h6>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px black; color: black;">5,12</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">4,15</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">24</b>
+</h6>
+<h6>
+    <b style="margin-left: 14%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">ÚLTIMA</b>
+    <b style="margin-left: 6%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">MEDIA</b>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">JOGOS</b>
+</h6>
+<br>
+
+<h1>
+    <hr>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;font-size:10px;margin-bottom:50%">CS</b>
+    <b style="-webkit-text-stroke: 0.1px black;color: black;margin-right:12%">42.64 </b>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #fa9e91; color: black;font-size:10px;margin-bottom:50%">8.21%</b>
+
+</h1>
+      </div>
+      <br>
+      <div id="ftzag2" class="card" style="background-image: url('https://i.ibb.co/vZYh09H/imagem-2024-04-10-190930999.png');">
+    <br>
+    <h1><b id="nmzag2" style="-webkit-text-stroke: 0.5px black;color: black;margin-left:12%">NEYMAR JR <b></h1><img src="confere.png" style="position: absolute; top: 0; right: 0;" width="25px" height="25px">
+    <h6><b style="-webkit-text-stroke: 0.5px #cfcfcf;color: black;margin-right:14%">ZAGUEIRO 2<b></h6>
+    <br>
+   <h6>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px black; color: black;">5,12</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">4,15</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">24</b>
+</h6>
+<h6>
+    <b style="margin-left: 14%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">ÚLTIMA</b>
+    <b style="margin-left: 6%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">MEDIA</b>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">JOGOS</b>
+</h6>
+<br>
+
+<h1>
+    <hr>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;font-size:10px;margin-bottom:50%">CS</b>
+    <b style="-webkit-text-stroke: 0.1px black;color: black;margin-right:12%">42.64 </b>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #fa9e91; color: black;font-size:10px;margin-bottom:50%">8.21%</b>
+
+</h1>
+      </div>
+      <br>
+      <div id="ftlatdireito" class="card" style="background-image: url('https://i.ibb.co/vZYh09H/imagem-2024-04-10-190930999.png');" >
+    <br>
+    <h1><b id="nmlatdireito" style="-webkit-text-stroke: 0.5px black;color: black;margin-left:12%">NEYMAR JR <b></h1><img src="confere.png" style="position: absolute; top: 0; right: 0;" width="25px" height="25px">
+    <h6><b style="-webkit-text-stroke: 0.5px #cfcfcf;color: black;margin-right:16%">LAT DIREITO<b></h6>
+    <br>
+   <h6>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px black; color: black;">5,12</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">4,15</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">24</b>
+</h6>
+<h6>
+    <b style="margin-left: 14%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">ÚLTIMA</b>
+    <b style="margin-left: 6%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">MEDIA</b>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">JOGOS</b>
+</h6>
+<br>
+
+<h1>
+    <hr>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;font-size:10px;margin-bottom:50%">CS</b>
+    <b style="-webkit-text-stroke: 0.1px black;color: black;margin-right:12%">42.64 </b>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #fa9e91; color: black;font-size:10px;margin-bottom:50%">8.21%</b>
+
+</h1>
+      </div>
+      <br>
+      <div id="ftmeio1" class="card"  style="background-image: url('https://i.ibb.co/vZYh09H/imagem-2024-04-10-190930999.png');">
+    <br>
+    <h1><b id="nmmeio1" style="-webkit-text-stroke: 0.5px black;color: black;margin-left:12%">NEYMAR JR <b></h1><img src="confere.png" style="position: absolute; top: 0; right: 0;" width="25px" height="25px">
+    <h6><b style="-webkit-text-stroke: 0.5px #cfcfcf;color: black;margin-right:23%">MEIO 1<b></h6>
+    <br>
+   <h6>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px black; color: black;">5,12</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">4,15</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">24</b>
+</h6>
+<h6>
+    <b style="margin-left: 14%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">ÚLTIMA</b>
+    <b style="margin-left: 6%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">MEDIA</b>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">JOGOS</b>
+</h6>
+<br>
+
+<h1>
+    <hr>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;font-size:10px;margin-bottom:50%">CS</b>
+    <b style="-webkit-text-stroke: 0.1px black;color: black;margin-right:12%">42.64 </b>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #fa9e91; color: black;font-size:10px;margin-bottom:50%">8.21%</b>
+
+</h1>
+      </div>
+      <div id="ftmeio2" class="card" style="background-image: url('https://i.ibb.co/vZYh09H/imagem-2024-04-10-190930999.png');" >
+    <br>
+    <h1><b id="nmmeio2" style="-webkit-text-stroke: 0.5px black;color: black;margin-left:12%">NEYMAR JR <b></h1><img src="confere.png" style="position: absolute; top: 0; right: 0;" width="25px" height="25px">
+    <h6><b style="-webkit-text-stroke: 0.5px #cfcfcf;color: black;margin-right:23%">MEIO 2<b></h6>
+    <br>
+   <h6>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px black; color: black;">5,12</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">4,15</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">24</b>
+</h6>
+<h6>
+    <b style="margin-left: 14%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">ÚLTIMA</b>
+    <b style="margin-left: 6%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">MEDIA</b>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">JOGOS</b>
+</h6>
+<br>
+
+<h1>
+    <hr>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;font-size:10px;margin-bottom:50%">CS</b>
+    <b style="-webkit-text-stroke: 0.1px black;color: black;margin-right:12%">42.64 </b>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #fa9e91; color: black;font-size:10px;margin-bottom:50%">8.21%</b>
+
+</h1>
+      </div>
+      <br>
+      <div id="ftmeio3" class="card" style="background-image: url('https://i.ibb.co/vZYh09H/imagem-2024-04-10-190930999.png');" >
+    <br>
+    <h1><b id="nmmeio3" style="-webkit-text-stroke: 0.5px black;color: black;margin-left:12%">NEYMAR JR <b></h1><img src="confere.png" style="position: absolute; top: 0; right: 0;" width="25px" height="25px">
+    <h6><b style="-webkit-text-stroke: 0.5px #cfcfcf;color: black;margin-right:23%">MEIO 3<b></h6>
+    <br>
+   <h6>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px black; color: black;">5,12</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">4,15</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">24</b>
+</h6>
+<h6>
+    <b style="margin-left: 14%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">ÚLTIMA</b>
+    <b style="margin-left: 6%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">MEDIA</b>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">JOGOS</b>
+</h6>
+<br>
+
+<h1>
+    <hr>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;font-size:10px;margin-bottom:50%">CS</b>
+    <b style="-webkit-text-stroke: 0.1px black;color: black;margin-right:12%">42.64 </b>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #fa9e91; color: black;font-size:10px;margin-bottom:50%">8.21%</b>
+
+</h1>
+      </div>
+      <br>
+      <div id="ftatac1" class="card" style="background-image: url('https://i.ibb.co/vZYh09H/imagem-2024-04-10-190930999.png');" >
+    <br>
+    <h1><b id="nmatac1" style="-webkit-text-stroke: 0.5px black;color: black;margin-left:12%">NEYMAR JR <b></h1><img src="confere.png" style="position: absolute; top: 0; right: 0;" width="25px" height="25px">
+    <h6><b style="-webkit-text-stroke: 0.5px #cfcfcf;color: black;margin-right:14%">ATACANTE 1<b></h6>
+    <br>
+   <h6>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px black; color: black;">5,12</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">4,15</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">24</b>
+</h6>
+<h6>
+    <b style="margin-left: 14%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">ÚLTIMA</b>
+    <b style="margin-left: 6%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">MEDIA</b>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">JOGOS</b>
+</h6>
+<br>
+
+<h1>
+    <hr>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;font-size:10px;margin-bottom:50%">CS</b>
+    <b style="-webkit-text-stroke: 0.1px black;color: black;margin-right:12%">42.64 </b>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #fa9e91; color: black;font-size:10px;margin-bottom:50%">8.21%</b>
+
+</h1>
+      </div>
+      <br>
+      <div id="ftatac2" class="card" style="background-image: url('https://i.ibb.co/vZYh09H/imagem-2024-04-10-190930999.png');" >
+    <br>
+    <h1><b id="nmatac2" style="-webkit-text-stroke: 0.5px black;color: black;margin-left:12%">NEYMAR JR <b></h1><img src="confere.png" style="position: absolute; top: 0; right: 0;" width="25px" height="25px">
+    <h6><b style="-webkit-text-stroke: 0.5px #cfcfcf;color: black;margin-right:14%">ATACANTE 2<b></h6>
+    <br>
+   <h6>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px black; color: black;">5,12</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">4,15</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">24</b>
+</h6>
+<h6>
+    <b style="margin-left: 14%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">ÚLTIMA</b>
+    <b style="margin-left: 6%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">MEDIA</b>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">JOGOS</b>
+</h6>
+<br>
+
+<h1>
+    <hr>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;font-size:10px;margin-bottom:50%">CS</b>
+    <b style="-webkit-text-stroke: 0.1px black;color: black;margin-right:12%">42.64 </b>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #fa9e91; color: black;font-size:10px;margin-bottom:50%">8.21%</b>
+
+</h1>
+      </div>
+      <br>
+      <div id="ftatac3" class="card" style="background-image: url('https://i.ibb.co/vZYh09H/imagem-2024-04-10-190930999.png');" >
+    <br>
+    <h1><b id="nmatac3" style="-webkit-text-stroke: 0.5px black;color: black;margin-left:12%">NEYMAR JR <b></h1><img src="confere.png" style="position: absolute; top: 0; right: 0;" width="25px" height="25px">
+    <h6><b style="-webkit-text-stroke: 0.5px #cfcfcf;color: black;margin-right:11%">ATACANTE 3<b></h6>
+    <br>
+   <h6>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px black; color: black;">5,12</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">4,15</b>
+    <b style="margin-left: 11%; -webkit-text-stroke: 0.5px black; color: black;">24</b>
+</h6>
+<h6>
+    <b style="margin-left: 14%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">ÚLTIMA</b>
+    <b style="margin-left: 6%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">MEDIA</b>
+    <b style="margin-left: 7%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;">JOGOS</b>
+</h6>
+<br>
+
+<h1>
+    <hr>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #cfcfcf; color: black;font-size:10px;margin-bottom:50%">CS</b>
+    <b style="-webkit-text-stroke: 0.1px black;color: black;margin-right:12%">42.64 </b>
+    <b style="margin-left: 0%; -webkit-text-stroke: 0.5px #fa9e91; color: black;font-size:10px;margin-bottom:50%">8.21%</b>
+
+</h1>
+      </div>
+      
+
+      <br>
+      </center>
+      <center>
+
+<a href='telaselecao.html'><button class="full-rounded">
+<span style="color:white">Voltar</span>
+</button>
+</a>
+
+
+      </center>
+      <br>
+      <br>
+
+      </center>
+    
+</body>
+</html>

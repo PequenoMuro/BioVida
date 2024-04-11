@@ -1,0 +1,269 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<style>
+    /**/
+body {
+  background-image: url("css/campo.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.select-circulo {
+  background: rgb(255, 255, 255);
+  box-shadow: 0px 5px 10px #00000033;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;   
+}
+
+.select-circulo select {
+  background: rgb(255, 255, 255);
+  color: transparent;
+  width: 45px;
+  height: 45px;
+  line-height: 50px; 
+  text-align: center;
+  outline: none;
+  border: none;
+}
+
+button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    box-shadow: 0px 5px 10px #00000033;
+    background-color: greenyellow;
+    color: black;
+    padding-block: 0.5rem;
+    padding-inline: 1.25rem;
+    border-radius: 9999px;
+    border: none;
+    width: 130px;
+  }
+  .vermelho{
+    background-color: #ff013c ;  
+    color: white;  
+  }
+  
+</style>
+<body>
+    <script>
+        $(document).ready(function() {
+            $('select').on('change', function() {
+                var opcaoSelecionada = $(this).val();
+                var imagem = $(this).find('option:selected').data('caminhoimagem');
+
+                // Mudar o fundo conforme a opção selecionada
+                if (opcaoSelecionada === 'opcao0') {
+                    $(this).css('background-image', 'url("padrao.png")');
+                } else {
+                    $(this).css('background-image', 'url("' + imagem + '")');
+                }      
+            });
+
+            var opcoesSelecionadasAnteriormente = {};
+            
+                                    $('.zagueiro-bloqueio').change(function() {
+                var selectId = $(this).attr('id');
+                var opcaoSelecionada = $(this).val();
+                
+                // Desbloqueia a opção selecionada anteriormente nos outros selects
+                if (opcoesSelecionadasAnteriormente[selectId]) {
+                    $('.zagueiro-bloqueio').not('#' + selectId).find('option[value="' + opcoesSelecionadasAnteriormente[selectId] + '"]').prop('disabled', false);
+                }
+                
+                // Bloqueia a opção selecionada nos outros selects
+                $('.zagueiro-bloqueio').not('#' + selectId).find('option[value="' + opcaoSelecionada + '"]').prop('disabled', true);
+                
+                // Atualiza a opção selecionada anteriormente para este select
+                opcoesSelecionadasAnteriormente[selectId] = opcaoSelecionada;
+            });
+
+            $('.meio-bloqueio').change(function() {
+                var selectId = $(this).attr('id');
+                var opcaoSelecionada = $(this).val();
+                
+                // Desbloqueia a opção selecionada anteriormente nos outros selects
+                if (opcoesSelecionadasAnteriormente[selectId]) {
+                    $('.meio-bloqueio').not('#' + selectId).find('option[value="' + opcoesSelecionadasAnteriormente[selectId] + '"]').prop('disabled', false);
+                }
+                
+                // Bloqueia a opção selecionada nos outros selects
+                $('.meio-bloqueio').not('#' + selectId).find('option[value="' + opcaoSelecionada + '"]').prop('disabled', true);
+                
+                // Atualiza a opção selecionada anteriormente para este select
+                opcoesSelecionadasAnteriormente[selectId] = opcaoSelecionada;
+            });
+
+                        $('.atacante-bloqueio').change(function() {
+                var selectId = $(this).attr('id');
+                var opcaoSelecionada = $(this).val();
+                
+                // Desbloqueia a opção selecionada anteriormente nos outros selects
+                if (opcoesSelecionadasAnteriormente[selectId]) {
+                    $('.atacante-bloqueio').not('#' + selectId).find('option[value="' + opcoesSelecionadasAnteriormente[selectId] + '"]').prop('disabled', false);
+                }
+                
+                // Bloqueia a opção selecionada nos outros selects
+                $('.atacante-bloqueio').not('#' + selectId).find('option[value="' + opcaoSelecionada + '"]').prop('disabled', true);
+                
+                // Atualiza a opção selecionada anteriormente para este select
+                opcoesSelecionadasAnteriormente[selectId] = opcaoSelecionada;
+            });
+
+            // Limpar seleções
+            $('#limpar').on('click', function() {
+                $('select').val('opcao0').trigger('change');
+                $('select option').prop('disabled', false);
+            });
+
+            // Montar seleções
+            $('#montar-time').on('click', function() {
+                var todosSelecionados = true;
+                $('select').each(function() {
+                    if ($(this).val() === 'opcao0') {
+                        todosSelecionados = false;
+                        return false; // Saia do loop se encontrar um não selecionado
+                    }
+                });
+
+                if (todosSelecionados) {
+                    var selecoes = $('select').map(function() {
+                        return $(this).val();
+                    }).get();
+                    var urlParams = selecoes.join('&');
+                    window.location.href = 'index2.html?' + urlParams;
+                } else {
+                    alert('Por favor, selecione uma opção para cada posição.');
+                }
+            });
+        });
+    </script>
+
+    <div name="goleiro" class="select-circulo" style="position: absolute; left: 184px; top: 723px;">
+        <select id="goleiro">
+            <option value="opcao0" selected>NENHUM SELECIONADO</option>
+            <option value="ALISSON" data-caminhoimagem="goleiro/alisson.png">ALISSON BECKER</option>
+            <option value="BENTO" data-caminhoimagem="goleiro/bento.png">BENTO</option>
+            <option value="CASSIO" data-caminhoimagem="goleiro/cassio.png">CÁSSIO</option>
+        </select>
+    </div>
+
+    <div name="lateralesquerdo" class="select-circulo" style="position: absolute; left: 56px; top: 565px;">
+        <select id="lateralesquerdo">
+            <option value="opcao0" selected>NENHUM SELECIONADO</option>
+            <option value="MARCELO" data-caminhoimagem="lateralesquerdo/marcelo.png">MARCELO</option>
+            <option value="ROBERTO" data-caminhoimagem="lateralesquerdo/robertocarlos.png">ROBERTO CARLOS</option>
+        </select>
+    </div>
+
+    <div name="zagueiro1" class="select-circulo" style="position: absolute; left: 140px; top: 565px;">
+        <select id="zagueiro1" class="zagueiro-bloqueio">
+            <option value="opcao0" selected>NENHUM SELECIONADO</option>
+            <option value="GIL" data-caminhoimagem="zagueiro/gil.png" >GIL</option>
+            <option value="HARRY" data-caminhoimagem="zagueiro/harrymaquire.png" >HARRY MAGUIRE</option>
+            <option value="MALDINI" data-caminhoimagem="zagueiro/maldini.png"> MALDINI</option>
+            <option value="PIQUE" data-caminhoimagem="zagueiro/pique.png" >PIQUE</option>
+            <option value="SERGIO" data-caminhoimagem="zagueiro/sergioramos.png" >SÉRGIO RAMOS</option>
+        </select>
+    </div>
+
+    <div name="zagueiro2" class="select-circulo" style="position: absolute; left: 224px; top: 565px;">
+        <select id="zagueiro2" class="zagueiro-bloqueio">
+            <option value="opcao0" selected>NENHUM SELECIONADO</option>
+            <option value="GIL" data-caminhoimagem="zagueiro/gil.png" >GIL</option>
+            <option value="HARRY" data-caminhoimagem="zagueiro/harrymaquire.png" >HARRY MAGUIRE</option>
+            <option value="MALDINI" data-caminhoimagem="zagueiro/maldini.png"> MALDINI</option>
+            <option value="PIQUE" data-caminhoimagem="zagueiro/pique.png" >PIQUÉ</option>
+            <option value="SERGIO" data-caminhoimagem="zagueiro/sergioramos.png" >SÉRGIO RAMOS</option>
+        </select>
+    </div>
+
+    <div name="lateraldireito" class="select-circulo" style="position: absolute; left: 308px; top: 565px;">
+        <select id="lateraldireito">
+            <option value="opcao0" selected>NENHUM SELECIONADO</option>
+            <option value="CAFU" data-caminhoimagem="lateraldireito/cafu.png" >CAFU</option>
+            <option value="DANIEL" data-caminhoimagem="lateraldireito/danielalves.png" >DANIEL ALVES</option>
+        </select>
+    </div>
+
+    <div name="meio1" class="select-circulo" style="position: absolute; left: 90px; top: 423px;">
+        <select id="meio1" class="meio-bloqueio">
+            <option value="opcao0" selected>NENHUM SELECIONADO</option>
+            <option value="CASEMIRO" data-caminhoimagem="meio/casemiro.png" >CASEMIRO</option>
+            <option value="MODRIC" data-caminhoimagem="meio/modric.png" >MODRIC</option>
+            <option value="RALF" data-caminhoimagem="meio/ralf.png" >RALF</option>
+            <option value="TONI" data-caminhoimagem="meio/tonikroos.png" >TONI KROOS</option>
+            <option value="VALVERDE" data-caminhoimagem="meio/valverde.png" >VALVERDE</option>
+        </select>
+    </div>
+
+    <div name="meio2" class="select-circulo" style="position: absolute; left: 184px; top: 373px;">
+        <select id="meio2" class="meio-bloqueio">
+            <option value="opcao0" selected>NENHUM SELECIONADO</option>
+            <option value="CASEMIRO" data-caminhoimagem="meio/casemiro.png" >CASEMIRO</option>
+            <option value="MODRIC" data-caminhoimagem="meio/modric.png" >MODRIC</option>
+            <option value="RALF" data-caminhoimagem="meio/ralf.png" >RALF</option>
+            <option value="TONI" data-caminhoimagem="meio/tonikroos.png" >TONI KROOS</option>
+            <option value="VALVERDE" data-caminhoimagem="meio/valverde.png" >VALVERDE</option>
+        </select>
+    </div>
+        
+    <div name="meio3" class="select-circulo" style="position: absolute; left: 278px; top: 423px;">
+        <select id="meio3" class="meio-bloqueio">
+            <option value="opcao0" selected>NENHUM SELECIONADO</option>
+            <option value="CASEMIRO" data-caminhoimagem="meio/casemiro.png" >CASEMIRO</option>
+            <option value="MODRIC" data-caminhoimagem="meio/modric.png" >MODRIC</option>
+            <option value="RALF" data-caminhoimagem="meio/ralf.png" >RALF</option>
+            <option value="TONI" data-caminhoimagem="meio/tonikroos.png" >TONI KROOS</option>
+            <option value="VALVERDE" data-caminhoimagem="meio/valverde.png" >VALVERDE</option>
+        </select>
+    </div>
+
+    <div name="atacante1" class="select-circulo" style="position: absolute; left: 90px; top: 270px;">
+        <select id="atacante1" class="atacante-bloqueio">
+            <option value="opcao0" selected>NENHUM SELECIONADO</option>
+            <option value="PELE" data-caminhoimagem="atacante/pele.png">PELÉ</option>
+            <option value="RIVALDO" data-caminhoimagem="atacante/rivaldo.png" >RIVALDO</option>
+            <option value="RONALDINHO" data-caminhoimagem="atacante/ronaldinho.png" >RONALDINHO</option>
+            <option value="RONALDO" data-caminhoimagem="atacante/ronaldo.png" >RONALDO</option>
+            <option value="VINICIUS JUNIOR" data-caminhoimagem="atacante/vinijr.png" >VINÍCIUS JÚNIOR</option>
+        </select>
+    </div>
+
+    <div name="atacante2" class="select-circulo" style="position: absolute; left: 184px; top: 270px;">
+        <select id="atacante2" class="atacante-bloqueio">
+            <option value="opcao0" selected>NENHUM SELECIONADO</option>
+            <option value="PELE" data-caminhoimagem="atacante/pele.png">PELÉ</option>
+            <option value="RIVALDO" data-caminhoimagem="atacante/rivaldo.png" >RIVALDO</option>
+            <option value="RONALDINHO" data-caminhoimagem="atacante/ronaldinho.png" >RONALDINHO</option>
+            <option value="RONALDO" data-caminhoimagem="atacante/ronaldo.png" >RONALDO</option>
+            <option value="VINICIUS JUNIOR" data-caminhoimagem="atacante/vinijr.png" >VINÍCIUS JÚNIOR</option>
+        </select>
+    </div>
+        
+    <div name="atacante3" class="select-circulo" style="position: absolute; left: 278px; top: 270px;">
+        <select id="atacante3" class="atacante-bloqueio">
+            <option value="opcao0" selected>NENHUM SELECIONADO</option>
+            <option value="PELE" data-caminhoimagem="atacante/pele.png">PELÉ</option>
+            <option value="RIVALDO" data-caminhoimagem="atacante/rivaldo.png" >RIVALDO</option>
+            <option value="RONALDINHO" data-caminhoimagem="atacante/ronaldinho.png" >RONALDINHO</option>
+            <option value="RONALDO" data-caminhoimagem="atacante/ronaldo.png" >RONALDO</option>
+            <option value="VINICIUS JUNIOR" data-caminhoimagem="atacante/vinijr.png" >VINÍCIUS JÚNIOR</option>
+        </select>
+    </div>
+
+    <button style="position: absolute; left: 265px; top: 30px;" id="montar-time" onclick="exibirValoresSelecionados()"> Montar time </button>
+    <button style="position: absolute; left: 15px; top: 30px;" class="vermelho" id="limpar"> Limpar</button>
+</body>
+</html>
